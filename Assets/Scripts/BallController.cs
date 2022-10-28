@@ -18,8 +18,8 @@ public class BallController : MonoBehaviour
         rig = GetComponent<Rigidbody2D>();
 
 
-
-        
+        // ini agar input dari vector speednya antara x=6 atau x=-6 dan antara y=-8 atau y=8
+        speed = new Vector2((Random.Range(0, 2) == 0 ? -6 : 6), Random.Range(0, 2) == 0 ? -8 : 8);
 
 
 
