@@ -7,6 +7,9 @@ public class BallController : MonoBehaviour
 
 
     public Vector2 speed;
+    public Vector2 resetPosition;
+
+
 
   
 
@@ -18,23 +21,30 @@ public class BallController : MonoBehaviour
         rig = GetComponent<Rigidbody2D>();
 
 
-        // ini agar input dari vector speednya antara x=6 atau x=-6 dan antara y=-8 atau y=8
-        speed = new Vector2((Random.Range(0, 2) == 0 ? -6 : 6), Random.Range(0, 2) == 0 ? -8 : 8);
-
-
-
-
         // alangkah baiknya jika sudah menggunakan physic kita menggerakan objek
         //menggunakan pyshic dan tidak menggunakan transform lagi.
-        rig.velocity = speed;
+        //ini  juga agar input dari vector speednya antara x=10 atau x=-10 dan antara y=-12 atau y=12
+        rig.velocity = new Vector2((Random.Range(0, 2) == 0 ? -10 : 10), (Random.Range(0, 2) == 0 ? -12 : 12));
     }
 
-    
-  
 
-   
+    public void ResetBall()
+    {
+        
+        //ini untuk me restart posisi
+        transform.position = new Vector3(resetPosition.x, resetPosition.y, 1);
 
-     
+        // ini agar setiap mereset bola speednya juga di reset sehingga tidak terjadi bug bola melambat
+        //namun masih ada bug diman jika speed bola berubah untuk meresetnya hanya bisa dilakukan saat terjadi goal
+        //jika tidak terjadi goal maka speed bola tetap berubah (bug terjadi jika bola mengenai atas paddle yang terjadi adalah speed bola berubah)
+        rig.velocity = new Vector2((Random.Range(0, 2) == 0 ? -10 : 10), (Random.Range(0, 2) == 0 ? -12 : 12));
+ 
 
-   
+    }
+
+
+
+
+
+
 }

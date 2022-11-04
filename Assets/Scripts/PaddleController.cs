@@ -9,23 +9,24 @@ public class PaddleController : MonoBehaviour
     public KeyCode Up;
     public KeyCode Down;
 
+    private Rigidbody2D rig;
 
     private void Start()
     {
-        
+        rig = GetComponent<Rigidbody2D>();
     }
     private void Update()
     {
 
         // ambil input
-        Vector2 movement = GetInput();
+        //Vector2 movement = GetInput();
 
 
         // gerakan object pake input
-        MoveObject(movement);
+       // MoveObject(movement);
 
         //Atau kalo mau lebh simpel bisa
-        // MovedObject(GetInput());
+         MoveObject(GetInput());
 
     }
 
@@ -53,7 +54,8 @@ public class PaddleController : MonoBehaviour
     private void MoveObject(Vector2 movement)
     {
 
-        transform.Translate(movement * Time.deltaTime);
+
+        rig.velocity = movement;
     }
 
 }
