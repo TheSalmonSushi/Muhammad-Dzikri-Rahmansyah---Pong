@@ -33,8 +33,9 @@ public class PaddleController : MonoBehaviour
 
     private Vector2 GetInput()
     {
-       
-        
+
+  
+
 
         if (Input.GetKey(Up))
         {
