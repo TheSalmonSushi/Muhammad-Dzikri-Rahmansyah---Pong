@@ -16,7 +16,9 @@ public class PowerUpManager : MonoBehaviour
 
     public int spawnInterval;
 
+
     private float timer;
+ 
 
 
     // Start is called before the first frame update
@@ -30,17 +32,20 @@ public class PowerUpManager : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
+      
 
         if (timer > spawnInterval)
         {
             GenerateRandomPowerUp();
             timer -= spawnInterval;
         }
+
+       
     }
 
     public void GenerateRandomPowerUp()
     {
-        GenerateRandomPowerUp(new Vector2(Random.Range(powerUpAreaMin.x, powerUpAreaMax.x), Random.Range(powerUpAreaMin.y, powerUpAreaMax.y)));
+        GenerateRandomPowerUp(new Vector3(Random.Range(powerUpAreaMin.x, powerUpAreaMax.x), Random.Range(powerUpAreaMin.y, powerUpAreaMax.y), 1f));
     }
 
     public void GenerateRandomPowerUp(Vector2 postition)
@@ -72,6 +77,8 @@ public class PowerUpManager : MonoBehaviour
         powerUpList.Remove(powerUp);
         Destroy(powerUp);
     }
+
+   
 
     public void RemoveAllPowerUp()
     {

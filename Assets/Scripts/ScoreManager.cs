@@ -55,6 +55,8 @@ public class ScoreManager : MonoBehaviour
     public void GameOver()
     {
         SceneManager.LoadScene("MainMenu");
+        SoundManager.Instance._musicSource.GetComponent<AudioSource>().Play();
+        SoundManager.Instance._musicSource2.GetComponent<AudioSource>().Stop();
     }
 
 }

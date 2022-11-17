@@ -13,6 +13,8 @@ public class BallController : MonoBehaviour
     
     public Vector2 resetPosition;
 
+    // STatic biar semua script bisa akses si boolean ini
+    public static string checkPad = null;
 
     
     // Rigid body harus disimpan agar dia gak nyari2 lagii komponen2 yg memang dibutuhkan
@@ -49,9 +51,12 @@ public class BallController : MonoBehaviour
                 collision.collider.bounds.size.y);
             Vector2 dir = new Vector2(-1, y).normalized;
             rig.velocity = dir * speed;
-            Debug.Log("Yhit" + y);
+           
+
+
+            checkPad = "rPad";
+            SoundManager.Instance._effectSource3.GetComponent<AudioSource>().Play();
         }
-        
         
             
         
@@ -64,7 +69,11 @@ public class BallController : MonoBehaviour
                 collision.collider.bounds.size.y);
             Vector2 dir = new Vector2(1, y).normalized;
             rig.velocity = dir * speed ;
-            Debug.Log("Yhit" + y);
+           
+
+
+            checkPad = "lPad";
+            SoundManager.Instance._effectSource3.GetComponent<AudioSource>().Play();
         }
     }
 
@@ -84,6 +93,7 @@ public class BallController : MonoBehaviour
         // ini agar setiap mereset bola speednya juga di reset sehingga tidak terjadi bug bola melambat
        //Ini juga agar saat bola di reset posisi dan speednya di buat antara x= -5 atau 5 dan y=-7 atau 7.
         rig.velocity = new Vector2((Random.Range(0, 2) == 0 ? -5 : 5), (Random.Range(0, 2) == 0 ? -7 : 7));
+        checkPad = null;
 
      
  

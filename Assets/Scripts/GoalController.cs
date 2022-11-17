@@ -16,10 +16,12 @@ public class GoalController : MonoBehaviour
             if (isRight)
             {
                 manager.AddRightScore(1);
+                SoundManager.Instance._effectSource4.GetComponent<AudioSource>().Play();
             }
             else
             {
                 manager.AddLeftScore(1);
+                SoundManager.Instance._effectSource4.GetComponent<AudioSource>().Play();
             }
         }
     }
